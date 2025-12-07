@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const SearchBar = ({ onSearch }) => {
+const SearchBar = ({ onSearch, placeholder }) => {
     const [query, setQuery] = useState('');
 
     const handleSubmit = (e) => {
@@ -15,6 +15,9 @@ const SearchBar = ({ onSearch }) => {
         onSearch('');
     };
 
+    const effectivePlaceholder =
+        placeholder || 'Search your favorite anime... (e.g., Naruto, One Piece)';
+
     return (
         <form onSubmit={handleSubmit} className="w-full max-w-3xl mx-auto">
             <div className="relative flex gap-3">
@@ -23,7 +26,7 @@ const SearchBar = ({ onSearch }) => {
                         type="text"
                         value={query}
                         onChange={(e) => setQuery(e.target.value)}
-                        placeholder="Search your favorite anime... (e.g., Naruto, One Piece)"
+                        placeholder={effectivePlaceholder}
                         className="w-full px-6 py-4 pr-20 bg-[theme(--color-dark-card)] text-white placeholder-[theme(--color-text-muted)] rounded-2xl border-2 border-[theme(--color-border)] focus:border-[theme(--color-primary)] focus:outline-none focus:ring-4 focus:ring-[theme(--color-primary)]/20 transition-all duration-300 shadow-lg font-medium"
                     />
                     {query && (

@@ -1,30 +1,33 @@
-import axios from 'axios';
+import axios from "axios";
 
-const BASE_URL = 'https://api.jikan.moe/v4';
+const BASE_URL = "https://api.jikan.moe/v4";
 
-// Rate limiting helper
-const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+/* =========================
+ * Rate limiting + queue
+ * ========================= */
 
-// Axios instance with rate limiting
 const api = axios.create({
   baseURL: BASE_URL,
 });
 
-// Rate limiter: Max 3 requests per second, 60 per minute
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
 let requestQueue = [];
 let isProcessing = false;
 
 const processQueue = async () => {
   if (isProcessing || requestQueue.length === 0) return;
-  
+
   isProcessing = true;
   const { resolve, reject, config } = requestQueue.shift();
-  
+
   try {
-    await delay(350); // 3 requests per second = ~350ms delay
-    const response = await axios(config);
+    // ~3 request per second
+    await delay(350);
+    const response = await api(config); // pakai axios instance dengan baseURL
     resolve(response.data);
   } catch (error) {
+    console.error("Jikan API error:", error);
     reject(error);
   } finally {
     isProcessing = false;
@@ -34,191 +37,332 @@ const processQueue = async () => {
   }
 };
 
-const queueRequest = (config) => {
-  return new Promise((resolve, reject) => {
+const queueRequest = (config) =>
+  new Promise((resolve, reject) => {
     requestQueue.push({ resolve, reject, config });
     processQueue();
   });
+
+/* =====================
+ * ANIME
+ * ===================== */
+
+// Top Anime: /top/anime
+export const getTopAnime = (page = 1, filter = "") => {
+  const filterParam = filter ? `&filter=${filter}` : "";
+  return queueRequest({
+    url: `/top/anime?page=${page}${filterParam}`,
+  });
 };
 
-// ===== ANIME ENDPOINTS =====
-export const getTopAnime = (page = 1, filter = '') => {
-  const filterParam = filter ? `&filter=${filter}` : '';
-  return queueRequest({ url: `${BASE_URL}/top/anime?page=${page}${filterParam}` });
+// Seasonal Anime: /seasons/now
+export const getSeasonalAnime = (page = 1) => {
+  return queueRequest({
+    url: `/seasons/now?page=${page}`,
+  });
 };
 
-export const getSeasonalAnime = () => {
-  return queueRequest({ url: `${BASE_URL}/seasons/now` });
-};
-
+// Search Anime: /anime?q=...
 export const searchAnime = (query, page = 1) => {
-  return queueRequest({ url: `${BASE_URL}/anime?q=${encodeURIComponent(query)}&page=${page}&sfw=true` });
+  return queueRequest({
+    url: `/anime?q=${encodeURIComponent(query)}&page=${page}&sfw=true`,
+  });
 };
 
+// Anime detail: /anime/{id}/full
 export const getAnimeFull = (id) => {
-  return queueRequest({ url: `${BASE_URL}/anime/${id}/full` });
+  return queueRequest({
+    url: `/anime/${id}/full`,
+  });
 };
 
+// Anime characters: /anime/{id}/characters
 export const getAnimeCharacters = (id) => {
-  return queueRequest({ url: `${BASE_URL}/anime/${id}/characters` });
+  return queueRequest({
+    url: `/anime/${id}/characters`,
+  });
 };
 
+// Anime staff: /anime/{id}/staff
 export const getAnimeStaff = (id) => {
-  return queueRequest({ url: `${BASE_URL}/anime/${id}/staff` });
+  return queueRequest({
+    url: `/anime/${id}/staff`,
+  });
 };
 
+// Anime episodes: /anime/{id}/episodes
 export const getAnimeEpisodes = (id, page = 1) => {
-  return queueRequest({ url: `${BASE_URL}/anime/${id}/episodes?page=${page}` });
+  return queueRequest({
+    url: `/anime/${id}/episodes?page=${page}`,
+  });
 };
 
+// Anime news: /anime/{id}/news
 export const getAnimeNews = (id, page = 1) => {
-  return queueRequest({ url: `${BASE_URL}/anime/${id}/news?page=${page}` });
+  return queueRequest({
+    url: `/anime/${id}/news?page=${page}`,
+  });
 };
 
+// Anime videos: /anime/{id}/videos
 export const getAnimeVideos = (id) => {
-  return queueRequest({ url: `${BASE_URL}/anime/${id}/videos` });
+  return queueRequest({
+    url: `/anime/${id}/videos`,
+  });
 };
 
+// Anime pictures: /anime/{id}/pictures
 export const getAnimePictures = (id) => {
-  return queueRequest({ url: `${BASE_URL}/anime/${id}/pictures` });
+  return queueRequest({
+    url: `/anime/${id}/pictures`,
+  });
 };
 
+// Anime statistics: /anime/{id}/statistics
 export const getAnimeStatistics = (id) => {
-  return queueRequest({ url: `${BASE_URL}/anime/${id}/statistics` });
+  return queueRequest({
+    url: `/anime/${id}/statistics`,
+  });
 };
 
+// Anime recommendations: /anime/{id}/recommendations
 export const getAnimeRecommendations = (id) => {
-  return queueRequest({ url: `${BASE_URL}/anime/${id}/recommendations` });
+  return queueRequest({
+    url: `/anime/${id}/recommendations`,
+  });
 };
 
+// Anime streaming: /anime/{id}/streaming
 export const getAnimeStreaming = (id) => {
-  return queueRequest({ url: `${BASE_URL}/anime/${id}/streaming` });
+  return queueRequest({
+    url: `/anime/${id}/streaming`,
+  });
 };
 
+// Anime themes (OP/ED): /anime/{id}/themes
 export const getAnimeThemes = (id) => {
-  return queueRequest({ url: `${BASE_URL}/anime/${id}/themes` });
+  return queueRequest({
+    url: `/anime/${id}/themes`,
+  });
 };
 
-// ===== MANGA ENDPOINTS =====
-export const getTopManga = (page = 1) => {
-  return queueRequest({ url: `${BASE_URL}/top/manga?page=${page}` });
+/* =====================
+ * MANGA
+ * ===================== */
+
+// Top Manga: /top/manga
+export const getTopManga = (page = 1, limit = 24) => {
+  return queueRequest({
+    url: `/top/manga?page=${page}&limit=${limit}&sfw=true`,
+  });
 };
 
-export const searchManga = (query, page = 1) => {
-  return queueRequest({ url: `${BASE_URL}/manga?q=${encodeURIComponent(query)}&page=${page}&sfw=true` });
+// Search Manga: /manga?q=...
+export const searchManga = (query, page = 1, limit = 24) => {
+  const q = encodeURIComponent(query);
+  return queueRequest({
+    url: `/manga?q=${q}&page=${page}&limit=${limit}&sfw=true&order_by=score&sort=desc`,
+  });
 };
 
+// Manga full detail: /manga/{id}/full
 export const getMangaFull = (id) => {
-  return queueRequest({ url: `${BASE_URL}/manga/${id}/full` });
+  return queueRequest({
+    url: `/manga/${id}/full`,
+  });
 };
 
+// Manga characters: /manga/{id}/characters
 export const getMangaCharacters = (id) => {
-  return queueRequest({ url: `${BASE_URL}/manga/${id}/characters` });
+  return queueRequest({
+    url: `/manga/${id}/characters`,
+  });
 };
 
-export const getMangaNews = (id) => {
-  return queueRequest({ url: `${BASE_URL}/manga/${id}/news` });
+// Manga news: /manga/{id}/news
+export const getMangaNews = (id, page = 1) => {
+  return queueRequest({
+    url: `/manga/${id}/news?page=${page}`,
+  });
 };
 
+// Manga pictures: /manga/{id}/pictures
 export const getMangaPictures = (id) => {
-  return queueRequest({ url: `${BASE_URL}/manga/${id}/pictures` });
+  return queueRequest({
+    url: `/manga/${id}/pictures`,
+  });
 };
 
+// Manga statistics: /manga/{id}/statistics
 export const getMangaStatistics = (id) => {
-  return queueRequest({ url: `${BASE_URL}/manga/${id}/statistics` });
+  return queueRequest({
+    url: `/manga/${id}/statistics`,
+  });
 };
 
-// ===== CHARACTERS ENDPOINTS =====
-export const getTopCharacters = (page = 1) => {
-  return queueRequest({ url: `${BASE_URL}/top/characters?page=${page}` });
+// Manga recommendations: /manga/{id}/recommendations
+export const getMangaRecommendations = (id) => {
+  return queueRequest({
+    url: `/manga/${id}/recommendations`,
+  });
 };
 
-export const searchCharacters = (query, page = 1) => {
-  return queueRequest({ url: `${BASE_URL}/characters?q=${encodeURIComponent(query)}&page=${page}` });
+// Manga genres: /genres/manga
+export const getMangaGenres = () => {
+  return queueRequest({
+    url: `/genres/manga`,
+  });
 };
 
+/* =====================
+ * CHARACTERS
+ * ===================== */
+
+// Top Characters: /top/characters
+export const getTopCharacters = (page = 1, limit = 24) => {
+  return queueRequest({
+    url: `/top/characters?page=${page}&limit=${limit}`,
+  });
+};
+
+// Search Characters: /characters?q=...
+export const searchCharacters = (query, page = 1, limit = 24) => {
+  const q = encodeURIComponent(query);
+  return queueRequest({
+    url: `/characters?q=${q}&page=${page}&limit=${limit}&order_by=favorites&sort=desc`,
+  });
+};
+
+// Character full detail: /characters/{id}/full
 export const getCharacterFull = (id) => {
-  return queueRequest({ url: `${BASE_URL}/characters/${id}/full` });
+  return queueRequest({
+    url: `/characters/${id}/full`,
+  });
 };
 
 export const getCharacterAnime = (id) => {
-  return queueRequest({ url: `${BASE_URL}/characters/${id}/anime` });
+  return queueRequest({
+    url: `/characters/${id}/anime`,
+  });
 };
 
 export const getCharacterManga = (id) => {
-  return queueRequest({ url: `${BASE_URL}/characters/${id}/manga` });
+  return queueRequest({
+    url: `/characters/${id}/manga`,
+  });
 };
 
 export const getCharacterVoices = (id) => {
-  return queueRequest({ url: `${BASE_URL}/characters/${id}/voices` });
+  return queueRequest({
+    url: `/characters/${id}/voices`,
+  });
 };
 
 export const getCharacterPictures = (id) => {
-  return queueRequest({ url: `${BASE_URL}/characters/${id}/pictures` });
+  return queueRequest({
+    url: `/characters/${id}/pictures`,
+  });
 };
 
-// ===== PEOPLE ENDPOINTS =====
+/* =====================
+ * PEOPLE
+ * ===================== */
+
 export const getTopPeople = (page = 1) => {
-  return queueRequest({ url: `${BASE_URL}/top/people?page=${page}` });
+  return queueRequest({
+    url: `/top/people?page=${page}`,
+  });
 };
 
 export const searchPeople = (query, page = 1) => {
-  return queueRequest({ url: `${BASE_URL}/people?q=${encodeURIComponent(query)}&page=${page}` });
+  const q = encodeURIComponent(query);
+  return queueRequest({
+    url: `/people?q=${q}&page=${page}`,
+  });
 };
 
 export const getPersonFull = (id) => {
-  return queueRequest({ url: `${BASE_URL}/people/${id}/full` });
+  return queueRequest({
+    url: `/people/${id}/full`,
+  });
 };
 
 export const getPersonAnime = (id) => {
-  return queueRequest({ url: `${BASE_URL}/people/${id}/anime` });
+  return queueRequest({
+    url: `/people/${id}/anime`,
+  });
 };
 
 export const getPersonManga = (id) => {
-  return queueRequest({ url: `${BASE_URL}/people/${id}/manga` });
+  return queueRequest({
+    url: `/people/${id}/manga`,
+  });
 };
 
 export const getPersonVoices = (id) => {
-  return queueRequest({ url: `${BASE_URL}/people/${id}/voices` });
+  return queueRequest({
+    url: `/people/${id}/voices`,
+  });
 };
 
 export const getPersonPictures = (id) => {
-  return queueRequest({ url: `${BASE_URL}/people/${id}/pictures` });
+  return queueRequest({
+    url: `/people/${id}/pictures`,
+  });
 };
 
-// ===== PRODUCERS/STUDIOS ENDPOINTS =====
+/* =====================
+ * PRODUCERS / STUDIOS
+ * ===================== */
+
 export const getProducers = (page = 1) => {
-  return queueRequest({ url: `${BASE_URL}/producers?page=${page}` });
+  return queueRequest({
+    url: `/producers?page=${page}`,
+  });
 };
 
 export const getProducerFull = (id) => {
-  return queueRequest({ url: `${BASE_URL}/producers/${id}/full` });
+  return queueRequest({
+    url: `/producers/${id}/full`,
+  });
 };
 
-// ===== GENRES ENDPOINTS =====
+/* =====================
+ * GENRES
+ * ===================== */
+
 export const getAnimeGenres = () => {
-  return queueRequest({ url: `${BASE_URL}/genres/anime` });
+  return queueRequest({
+    url: `/genres/anime`,
+  });
 };
 
-export const getMangaGenres = () => {
-  return queueRequest({ url: `${BASE_URL}/genres/manga` });
-};
+/* =====================
+ * RANDOM
+ * ===================== */
 
-// ===== RANDOM ENDPOINTS =====
 export const getRandomAnime = () => {
-  return queueRequest({ url: `${BASE_URL}/random/anime` });
+  return queueRequest({
+    url: `/random/anime`,
+  });
 };
 
 export const getRandomManga = () => {
-  return queueRequest({ url: `${BASE_URL}/random/manga` });
+  return queueRequest({
+    url: `/random/manga`,
+  });
 };
 
 export const getRandomCharacter = () => {
-  return queueRequest({ url: `${BASE_URL}/random/characters` });
+  return queueRequest({
+    url: `/random/characters`,
+  });
 };
 
 export const getRandomPerson = () => {
-  return queueRequest({ url: `${BASE_URL}/random/people` });
+  return queueRequest({
+    url: `/random/people`,
+  });
 };
 
 export default api;
