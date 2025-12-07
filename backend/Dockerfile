@@ -7,7 +7,7 @@ ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
 # 1. Install dependency dari requirements.txt
-COPY requirements.txt ./
+COPY backend/ .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # 2. Copy semua isi folder backend (manage.py, folder backend/, api/, dll)
