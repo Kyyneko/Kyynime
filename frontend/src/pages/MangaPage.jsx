@@ -53,6 +53,7 @@ const MangaPage = () => {
         title={isSearch ? `Search: "${searchQuery}"` : 'Top Manga'}
         count={!isLoading && !error ? mangaList.length : undefined}
         countLabel="manga found"
+        isLoading={isLoading}
       />
 
       <ContentGrid

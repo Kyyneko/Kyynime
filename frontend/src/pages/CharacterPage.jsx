@@ -53,6 +53,7 @@ const CharacterPage = () => {
         title={isSearch ? `Search: "${searchQuery}"` : 'Top Characters'}
         count={!isLoading && !error ? charList.length : undefined}
         countLabel="characters found"
+        isLoading={isLoading}
       />
 
       <ContentGrid

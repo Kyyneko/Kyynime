@@ -53,6 +53,7 @@ const PeoplePage = () => {
         title={isSearch ? `Search: "${searchQuery}"` : 'Voice Actors & Staff'}
         count={!isLoading && !error ? peopleList.length : undefined}
         countLabel="people found"
+        isLoading={isLoading}
       />
 
       <ContentGrid

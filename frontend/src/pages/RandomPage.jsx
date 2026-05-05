@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { Helmet } from 'react-helmet-async';
 import { getRandomAnime, getRandomManga, getRandomCharacter } from '../services/api';
+import { SkeletonRandom } from '../components/shared/SkeletonCard';
 
 const RandomPage = () => {
   const [category, setCategory] = useState('anime');
@@ -79,8 +80,11 @@ const RandomPage = () => {
         </div>
 
         {/* Result Card */}
-        <div className={`bg-[theme(--color-dark-card)] rounded-2xl border border-[theme(--color-border)] overflow-hidden shadow-2xl transition-all duration-500 ${isSpinning ? 'opacity-50 scale-95' : 'opacity-100 scale-100'}`}>
-          {item && !isSpinning ? (
+        {/* Result Card */}
+        {isSpinning ? (
+          <SkeletonRandom />
+        ) : item ? (
+          <div className="bg-[theme(--color-dark-card)] rounded-2xl border border-[theme(--color-border)] overflow-hidden shadow-2xl animate-scale-in">
             <div className="flex flex-col md:flex-row">
               {/* Image */}
               <div className="md:w-1/3">
@@ -137,15 +141,17 @@ const RandomPage = () => {
                 </div>
               </div>
             </div>
-          ) : (
+          </div>
+        ) : (
+          <div className="bg-[theme(--color-dark-card)] rounded-2xl border border-[theme(--color-border)] overflow-hidden shadow-2xl">
             <div className="flex flex-col items-center justify-center py-20">
-              <div className={`text-7xl mb-6 ${isSpinning ? 'animate-spin' : ''}`}>🎰</div>
+              <div className="text-7xl mb-6">🎰</div>
               <p className="text-[theme(--color-text-secondary)] text-lg font-semibold">
-                {isSpinning ? 'Spinning...' : 'Click a category to start!'}
+                Click a category to start!
               </p>
             </div>
-          )}
-        </div>
+          </div>
+        )}
 
         {/* Spin Again (Bottom) */}
         {item && !isSpinning && (

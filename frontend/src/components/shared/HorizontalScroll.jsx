@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { SkeletonHorizontalItem } from './SkeletonCard';
 
 const HorizontalScroll = ({ title, icon, data = [], renderCard, linkTo, linkText = 'View All', isLoading = false }) => {
   const scrollRef = useRef(null);
@@ -30,18 +31,6 @@ const HorizontalScroll = ({ title, icon, data = [], renderCard, linkTo, linkText
       behavior: 'smooth',
     });
   };
-
-  const SkeletonItem = () => (
-    <div className="flex-shrink-0 w-[140px] sm:w-[160px] md:w-[180px]">
-      <div className="rounded-xl overflow-hidden border border-[theme(--color-border)] bg-[theme(--color-dark-card)]">
-        <div className="aspect-[2/3] bg-[theme(--color-dark-light)] animate-pulse skeleton-shimmer" />
-        <div className="p-2.5 space-y-1.5">
-          <div className="h-3.5 bg-[theme(--color-dark-light)] rounded animate-pulse w-[85%]" />
-          <div className="h-3 bg-[theme(--color-dark-light)] rounded animate-pulse w-[55%]" />
-        </div>
-      </div>
-    </div>
-  );
 
   return (
     <section className="mb-10 animate-fade-in">
@@ -99,7 +88,7 @@ const HorizontalScroll = ({ title, icon, data = [], renderCard, linkTo, linkText
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
           {isLoading
-            ? Array.from({ length: 10 }).map((_, i) => <SkeletonItem key={i} />)
+            ? Array.from({ length: 10 }).map((_, i) => <SkeletonHorizontalItem key={i} index={i} />)
             : data.map((item, index) => (
                 <div key={item.mal_id || index} className="flex-shrink-0 w-[140px] sm:w-[160px] md:w-[180px]">
                   {renderCard(item)}

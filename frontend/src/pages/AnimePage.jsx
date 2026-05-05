@@ -77,7 +77,7 @@ const AnimePage = ({ mode = 'top' }) => {
         </div>
       )}
 
-      <PageHeader icon={getIcon()} title={getTitle()} count={!isLoading && !error ? animeList.length : undefined} countLabel="anime found" />
+      <PageHeader icon={getIcon()} title={getTitle()} count={!isLoading && !error ? animeList.length : undefined} countLabel="anime found" isLoading={isLoading} />
 
       <ContentGrid
         data={animeList}

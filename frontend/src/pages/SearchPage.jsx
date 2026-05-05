@@ -117,7 +117,14 @@ const SearchPage = () => {
               <h2 className="text-2xl font-black text-white mb-1">
                 🔍 Results for "<span className="text-[theme(--color-primary)]">{query}</span>"
               </h2>
-              {!isLoading && !error && <p className="text-[theme(--color-text-secondary)] text-sm"><span className="text-white font-bold">{results.length}</span> {type} found</p>}
+              {isLoading ? (
+                <div className="flex items-center gap-2 text-sm">
+                  <span className="inline-block w-2 h-2 bg-[theme(--color-primary)] rounded-full animate-ping" />
+                  <span className="text-[theme(--color-text-muted)] font-medium">Searching...</span>
+                </div>
+              ) : !error && (
+                <p className="text-[theme(--color-text-secondary)] text-sm"><span className="text-white font-bold">{results.length}</span> {type} found</p>
+              )}
             </div>
             <ContentGrid
               data={results}

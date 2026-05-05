@@ -3,6 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
 import { getTopAnime, getSeasonalAnime, getTopManga, getTopCharacters } from '../services/api';
 import HorizontalScroll from '../components/shared/HorizontalScroll';
+import { SkeletonHero } from '../components/shared/SkeletonCard';
 import { Helmet } from 'react-helmet-async';
 
 /* ---------- Mini Card for Horizontal Scroll ---------- */
@@ -223,7 +224,7 @@ const HomePage = () => {
       </Helmet>
 
       {/* Hero Banner */}
-      {heroAnime && <HeroBanner anime={heroAnime} />}
+      {loadingTop ? <SkeletonHero /> : heroAnime && <HeroBanner anime={heroAnime} />}
 
       {/* Trending Now */}
       <HorizontalScroll
