@@ -4,7 +4,46 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/letter-k.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kyynime</title>
+    
+    <!-- SEO Meta Tags -->
+    <title>Kyynime — Your Anime Paradise</title>
+    <meta name="description" content="Discover top anime, manga, characters, and voice actors. Browse seasonal anime, get recommendations, and explore the best of Japanese animation on Kyynime." />
+    <meta name="keywords" content="anime, manga, characters, voice actors, MyAnimeList, seasonal anime, top anime, anime recommendations" />
+    <meta name="author" content="Kyyneko" />
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Kyynime — Your Anime Paradise" />
+    <meta property="og:description" content="Discover top anime, manga, characters, and voice actors." />
+    <meta property="og:site_name" content="Kyynime" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Kyynime — Your Anime Paradise" />
+    <meta name="twitter:description" content="Discover top anime, manga, characters, and voice actors." />
+    
+    <!-- Theme -->
+    <meta name="theme-color" content="#0a0e27" />
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://api.jikan.moe" />
+    <link rel="preconnect" href="https://cdn.myanimelist.net" />
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Kyynime",
+      "url": "https://kyynime.com",
+      "description": "Discover top anime, manga, characters, and voice actors.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://kyynime.com/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
