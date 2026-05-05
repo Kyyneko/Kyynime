@@ -50,7 +50,17 @@
 
 @keyframes shimmer {
   0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
+  100% { transform: translateX(200%); }
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes stagger-in {
+  from { opacity: 0; transform: translateY(12px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 /* Custom utilities */
@@ -99,10 +109,11 @@ html {
   background: var(--color-primary-dark);
 }
 
-/* Skeleton shimmer effect */
+/* Skeleton shimmer effect — premium feel */
 .skeleton-shimmer {
   position: relative;
   overflow: hidden;
+  background: linear-gradient(135deg, var(--color-dark-light) 0%, var(--color-dark-card) 100%);
 }
 
 .skeleton-shimmer::after {
@@ -111,11 +122,25 @@ html {
   inset: 0;
   background: linear-gradient(
     90deg,
-    transparent,
-    rgba(255, 255, 255, 0.05),
-    transparent
+    transparent 0%,
+    rgba(255, 255, 255, 0.04) 30%,
+    rgba(255, 255, 255, 0.08) 50%,
+    rgba(255, 255, 255, 0.04) 70%,
+    transparent 100%
   );
-  animation: shimmer 1.5s infinite;
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+/* Skeleton bar — for text placeholders */
+.skeleton-bar {
+  background: linear-gradient(135deg, var(--color-dark-light) 0%, var(--color-dark-card) 100%);
+  animation: pulse-soft 1.8s ease-in-out infinite;
+  border-radius: 6px;
+}
+
+/* Staggered card animation */
+.stagger-card {
+  animation: stagger-in 0.4s ease-out both;
 }
 
 /* Hide scrollbar for horizontal scroll */
