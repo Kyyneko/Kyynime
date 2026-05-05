@@ -20,7 +20,7 @@ const CharacterCard = ({ character, onClick }) => {
                 {/* Favorites Badge */}
                 {character.favorites && (
                     <div className="absolute top-2 right-2 sm:top-3 sm:right-3 bg-gradient-to-br from-pink-500 to-red-500 text-white px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg font-black text-xs sm:text-sm shadow-xl flex items-center gap-1">
-                        <span>❤️</span>
+                        <span></span>
                         <span className="hidden sm:inline">{character.favorites.toLocaleString()}</span>
                         <span className="sm:hidden">{character.favorites > 999 ? `${(character.favorites / 1000).toFixed(1)}k` : character.favorites}</span>
                     </div>

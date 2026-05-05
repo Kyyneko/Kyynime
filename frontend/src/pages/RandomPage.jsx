@@ -40,9 +40,9 @@ const RandomPage = () => {
   };
 
   const categories = [
-    { id: 'anime', icon: '🎬', label: 'Anime' },
-    { id: 'manga', icon: '📖', label: 'Manga' },
-    { id: 'character', icon: '👥', label: 'Character' },
+    { id: 'anime', icon: '', label: 'Anime' },
+    { id: 'manga', icon: '', label: 'Manga' },
+    { id: 'character', icon: '', label: 'Character' },
   ];
 
   return (
@@ -55,7 +55,7 @@ const RandomPage = () => {
       <div className="max-w-3xl mx-auto animate-fade-in">
         {/* Header */}
         <div className="text-center mb-8">
-          <div className="text-6xl mb-4 animate-bounce">🎲</div>
+          <div className="text-6xl mb-4 animate-bounce"></div>
           <h1 className="text-3xl md:text-4xl font-black bg-gradient-to-r from-[theme(--color-primary)] to-[theme(--color-accent)] bg-clip-text text-transparent mb-2">
             Random Discovery
           </h1>
@@ -102,7 +102,7 @@ const RandomPage = () => {
                   {/* Badges */}
                   <div className="flex flex-wrap gap-2 mb-4">
                     {item.score && (
-                      <span className="bg-gradient-to-r from-amber-500 to-orange-500 px-3 py-1 rounded-lg text-white font-black text-sm">⭐ {item.score}</span>
+                      <span className="bg-gradient-to-r from-amber-500 to-orange-500 px-3 py-1 rounded-lg text-white font-black text-sm"> {item.score}</span>
                     )}
                     {item.type && (
                       <span className="bg-[theme(--color-primary)]/20 border border-[theme(--color-primary)] text-[theme(--color-primary)] px-3 py-1 rounded-lg font-bold text-sm">{item.type}</span>
@@ -111,7 +111,7 @@ const RandomPage = () => {
                       <span className="bg-emerald-500/20 border border-emerald-400 text-emerald-400 px-3 py-1 rounded-lg font-bold text-sm">{item.status}</span>
                     )}
                     {item.favorites && (
-                      <span className="bg-pink-500/20 border border-pink-400 text-pink-400 px-3 py-1 rounded-lg font-bold text-sm">❤️ {item.favorites.toLocaleString()}</span>
+                      <span className="bg-pink-500/20 border border-pink-400 text-pink-400 px-3 py-1 rounded-lg font-bold text-sm"> {item.favorites.toLocaleString()}</span>
                     )}
                   </div>
 
@@ -133,10 +133,10 @@ const RandomPage = () => {
                 {/* Actions */}
                 <div className="flex flex-wrap gap-3 mt-6">
                   <Link to={getDetailLink()} className="px-6 py-3 bg-gradient-to-r from-[theme(--color-primary)] to-[theme(--color-primary-dark)] text-white font-black rounded-xl hover:shadow-2xl hover:shadow-[theme(--color-primary)]/50 transform hover:scale-105 transition-all flex items-center gap-2">
-                    📖 View Details
+                     View Details
                   </Link>
                   <button onClick={handleSpin} className="px-6 py-3 bg-gradient-to-r from-[theme(--color-accent)] to-emerald-600 text-white font-black rounded-xl hover:shadow-2xl hover:shadow-[theme(--color-accent)]/50 transform hover:scale-105 transition-all flex items-center gap-2">
-                    🎲 Spin Again
+                     Spin Again
                   </button>
                 </div>
               </div>
@@ -145,7 +145,7 @@ const RandomPage = () => {
         ) : (
           <div className="bg-[theme(--color-dark-card)] rounded-2xl border border-[theme(--color-border)] overflow-hidden shadow-2xl">
             <div className="flex flex-col items-center justify-center py-20">
-              <div className="text-7xl mb-6">🎰</div>
+              <div className="text-7xl mb-6"></div>
               <p className="text-[theme(--color-text-secondary)] text-lg font-semibold">
                 Click a category to start!
               </p>
@@ -157,7 +157,7 @@ const RandomPage = () => {
         {item && !isSpinning && (
           <div className="text-center mt-8">
             <button onClick={handleSpin} className="px-10 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-black rounded-2xl hover:shadow-2xl hover:shadow-purple-500/50 transform hover:scale-105 transition-all text-lg flex items-center gap-3 mx-auto">
-              <span className="text-2xl">🎲</span> Try Another One!
+              <span className="text-2xl"></span> Try Another One!
             </button>
           </div>
         )}

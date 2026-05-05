@@ -29,7 +29,7 @@ const CharacterDetailPage = () => {
   if (error || !charData?.data) {
     return (
       <div className="flex flex-col items-center justify-center min-h-[500px] animate-fade-in">
-        <div className="text-8xl mb-6">😔</div>
+        <div className="text-8xl mb-6"></div>
         <h3 className="text-3xl font-black text-white mb-4">Failed to Load Character</h3>
         <button onClick={() => navigate(-1)} className="px-8 py-3 bg-gradient-to-r from-[theme(--color-primary)] to-[theme(--color-accent)] text-white font-black rounded-xl transition-all">← Go Back</button>
       </div>
@@ -64,7 +64,7 @@ const CharacterDetailPage = () => {
                 {char.name_kanji && <p className="text-[theme(--color-text-muted)] text-lg mb-4">{char.name_kanji}</p>}
                 <div className="flex flex-wrap gap-2 mb-4">
                   {char.favorites && (
-                    <span className="bg-gradient-to-r from-pink-500 to-rose-600 border-2 border-pink-400 px-4 py-1.5 rounded-xl text-white font-black text-sm">❤️ {char.favorites.toLocaleString()} Favorites</span>
+                    <span className="bg-gradient-to-r from-pink-500 to-rose-600 border-2 border-pink-400 px-4 py-1.5 rounded-xl text-white font-black text-sm"> {char.favorites.toLocaleString()} Favorites</span>
                   )}
                 </div>
                 {char.about && (
@@ -79,7 +79,7 @@ const CharacterDetailPage = () => {
           {/* Anime Appearances */}
           {animeRoles.length > 0 && (
             <div className="p-4 sm:p-6 lg:p-8 border-t border-[theme(--color-border)]">
-              <h2 className="text-xl sm:text-2xl font-bold text-white mb-4 flex items-center gap-2">🎬 Anime Appearances</h2>
+              <h2 className="text-xl sm:text-2xl font-bold text-white mb-4 flex items-center gap-2"> Anime Appearances</h2>
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
                 {animeRoles.map(role => (
                   <Link key={role.anime.mal_id} to={`/anime/${role.anime.mal_id}`} className="bg-[theme(--color-dark-light)] border border-[theme(--color-border)] rounded-xl overflow-hidden hover:scale-105 hover:border-[theme(--color-primary)] transition-all">
@@ -97,7 +97,7 @@ const CharacterDetailPage = () => {
           {/* Voice Actors */}
           {voices.length > 0 && (
             <div className="p-4 sm:p-6 lg:p-8 border-t border-[theme(--color-border)]">
-              <h2 className="text-xl sm:text-2xl font-bold text-white mb-4 flex items-center gap-2">🎙️ Voice Actors</h2>
+              <h2 className="text-xl sm:text-2xl font-bold text-white mb-4 flex items-center gap-2"> Voice Actors</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                 {voices.slice(0, 9).map((va, i) => (
                   <Link key={i} to={`/people/${va.person.mal_id}`} className="flex items-center gap-3 bg-[theme(--color-dark-light)] border border-[theme(--color-border)] rounded-xl p-3 hover:border-[theme(--color-primary)] transition-all">
@@ -115,7 +115,7 @@ const CharacterDetailPage = () => {
           {/* Gallery */}
           {pictures.length > 0 && (
             <div className="p-4 sm:p-6 lg:p-8 border-t border-[theme(--color-border)]">
-              <h2 className="text-xl sm:text-2xl font-bold text-white mb-4 flex items-center gap-2">🖼️ Gallery</h2>
+              <h2 className="text-xl sm:text-2xl font-bold text-white mb-4 flex items-center gap-2"> Gallery</h2>
               <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-3">
                 {pictures.slice(0, 12).map((pic, i) => (
                   <img key={i} src={pic.jpg?.image_url} alt={`${char.name} ${i + 1}`} className="w-full aspect-[2/3] object-cover rounded-xl border border-[theme(--color-border)] hover:border-[theme(--color-primary)] hover:scale-105 transition-all" />

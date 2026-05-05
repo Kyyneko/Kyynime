@@ -20,7 +20,7 @@ const MiniAnimeCard = ({ anime }) => (
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
         {anime.score && (
           <div className="absolute top-2 right-2 bg-gradient-to-br from-amber-400 to-orange-500 text-white px-1.5 py-0.5 rounded-md font-black text-xs flex items-center gap-0.5">
-            ⭐ {anime.score}
+             {anime.score}
           </div>
         )}
         <div className="absolute bottom-0 left-0 right-0 p-2">
@@ -58,7 +58,7 @@ const MiniMangaCard = ({ manga }) => (
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
         {manga.score && (
           <div className="absolute top-2 right-2 bg-gradient-to-br from-amber-400 to-orange-500 text-white px-1.5 py-0.5 rounded-md font-black text-xs flex items-center gap-0.5">
-            ⭐ {manga.score}
+             {manga.score}
           </div>
         )}
       </div>
@@ -84,7 +84,7 @@ const MiniCharCard = ({ character }) => (
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
         {character.favorites && (
           <div className="absolute top-2 right-2 bg-gradient-to-br from-pink-500 to-rose-600 text-white px-1.5 py-0.5 rounded-md font-black text-xs flex items-center gap-0.5">
-            ❤️ {character.favorites.toLocaleString()}
+             {character.favorites.toLocaleString()}
           </div>
         )}
       </div>
@@ -116,11 +116,11 @@ const HeroBanner = ({ anime }) => {
       <div className="relative z-10 px-6 md:px-10 py-12 md:py-20 lg:py-24 max-w-2xl">
         <div className="flex items-center gap-2 mb-4">
           <span className="bg-gradient-to-r from-[theme(--color-primary)] to-[theme(--color-accent)] text-white px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider">
-            🔥 #1 Trending
+             #1 Trending
           </span>
           {anime.score && (
             <span className="bg-amber-500/20 border border-amber-400 text-amber-300 px-3 py-1 rounded-full text-xs font-black">
-              ⭐ {anime.score}
+               {anime.score}
             </span>
           )}
         </div>
@@ -154,7 +154,7 @@ const HeroBanner = ({ anime }) => {
             to={`/anime/${anime.mal_id}`}
             className="px-6 py-3 bg-gradient-to-r from-[theme(--color-primary)] to-[theme(--color-primary-dark)] text-white font-black rounded-xl hover:shadow-2xl hover:shadow-[theme(--color-primary)]/50 transform hover:scale-105 transition-all duration-300 flex items-center gap-2"
           >
-            <span>📖</span> View Details
+            <span></span> View Details
           </Link>
           {anime.trailer?.url && (
             <a
@@ -163,7 +163,7 @@ const HeroBanner = ({ anime }) => {
               rel="noopener noreferrer"
               className="px-6 py-3 bg-white/10 backdrop-blur-sm border border-white/20 text-white font-black rounded-xl hover:bg-white/20 transform hover:scale-105 transition-all duration-300 flex items-center gap-2"
             >
-              <span>▶️</span> Watch Trailer
+              <span></span> Watch Trailer
             </a>
           )}
         </div>
@@ -229,7 +229,7 @@ const HomePage = () => {
       {/* Trending Now */}
       <HorizontalScroll
         title="Trending Anime"
-        icon="🔥"
+        icon=""
         data={topAnime.slice(0, 15)}
         isLoading={loadingTop}
         linkTo="/anime"
@@ -240,7 +240,7 @@ const HomePage = () => {
       {/* This Season */}
       <HorizontalScroll
         title="This Season"
-        icon="📅"
+        icon=""
         data={seasonal.slice(0, 15)}
         isLoading={loadingSeasonal}
         linkTo="/anime/seasonal"
@@ -251,7 +251,7 @@ const HomePage = () => {
       {/* Top Manga */}
       <HorizontalScroll
         title="Top Manga"
-        icon="📖"
+        icon=""
         data={topManga.slice(0, 15)}
         isLoading={loadingManga}
         linkTo="/manga"
@@ -262,7 +262,7 @@ const HomePage = () => {
       {/* Popular Characters */}
       <HorizontalScroll
         title="Popular Characters"
-        icon="👥"
+        icon=""
         data={topChars.slice(0, 15)}
         isLoading={loadingChars}
         linkTo="/characters"
@@ -273,10 +273,10 @@ const HomePage = () => {
       {/* Quick Links Footer */}
       <div className="mt-6 mb-4 grid grid-cols-2 md:grid-cols-4 gap-3">
         {[
-          { to: '/people', icon: '🎭', label: 'Voice Actors', desc: 'Explore VA profiles' },
-          { to: '/random', icon: '🎲', label: 'Random Pick', desc: 'Feeling lucky?' },
-          { to: '/search', icon: '🔍', label: 'Search', desc: 'Find anything' },
-          { to: '/anime/seasonal', icon: '📅', label: 'Seasonal', desc: 'Currently airing' },
+          { to: '/people', icon: '', label: 'Voice Actors', desc: 'Explore VA profiles' },
+          { to: '/random', icon: '', label: 'Random Pick', desc: 'Feeling lucky?' },
+          { to: '/search', icon: '', label: 'Search', desc: 'Find anything' },
+          { to: '/anime/seasonal', icon: '', label: 'Seasonal', desc: 'Currently airing' },
         ].map(item => (
           <Link
             key={item.to}

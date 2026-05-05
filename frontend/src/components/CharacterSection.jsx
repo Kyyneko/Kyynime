@@ -70,7 +70,7 @@ const CharactersSection = ({ onCharacterClick }) => {
             <div className="mb-6 animate-slide-up">
                 <div className="flex items-center gap-4 mb-3">
                     <div className="text-4xl">
-                        {activeTab === 'search' ? '🔍' : '👥'}
+                        {activeTab === 'search' ? '' : ''}
                     </div>
                     <h2 className="text-3xl md:text-4xl font-black bg-gradient-to-r from-[theme(--color-primary)] to-[theme(--color-accent)] bg-clip-text text-transparent">
                         {activeTab === 'search' ? `Search: "${searchQuery}"` : 'Top Characters'}
@@ -93,27 +93,27 @@ const CharactersSection = ({ onCharacterClick }) => {
                     <div className="relative mb-8">
                         <div className="animate-spin rounded-full h-24 w-24 border-t-4 border-b-4 border-[theme(--color-primary)]"></div>
                         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                            <div className="text-4xl">👥</div>
+                            <div className="text-4xl"></div>
                         </div>
                     </div>
                     <p className="text-[theme(--color-text-secondary)] text-xl font-semibold">Loading characters...</p>
                 </div>
             ) : error ? (
                 <div className="flex flex-col items-center justify-center min-h-[500px] animate-fade-in">
-                    <div className="text-8xl mb-6">😔</div>
+                    <div className="text-8xl mb-6"></div>
                     <h3 className="text-3xl font-black text-white mb-4">Oops! Something went wrong</h3>
                     <p className="text-[theme(--color-text-secondary)] mb-8 text-center max-w-md text-lg">{error}</p>
                     <button 
                         onClick={handleRetry}
                         className="px-10 py-4 bg-gradient-to-r from-[theme(--color-primary)] to-[theme(--color-accent)] text-white font-black rounded-xl hover:shadow-2xl hover:shadow-[theme(--color-primary)]/50 transform hover:scale-105 transition-all duration-300 flex items-center gap-3 text-lg"
                     >
-                        <span className="text-2xl">🔄</span>
+                        <span className="text-2xl"></span>
                         <span>Try Again</span>
                     </button>
                 </div>
             ) : characterList.length === 0 ? (
                 <div className="flex flex-col items-center justify-center min-h-[500px] animate-fade-in">
-                    <div className="text-8xl mb-6">🔍</div>
+                    <div className="text-8xl mb-6"></div>
                     <h3 className="text-3xl font-black text-white mb-4">No Characters Found</h3>
                     <p className="text-[theme(--color-text-secondary)] text-center max-w-md text-lg">
                         Try searching with different keywords

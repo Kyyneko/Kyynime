@@ -4,7 +4,7 @@ const PageHeader = ({ icon, title, count, countLabel = 'found', subtitle, isLoad
   return (
     <div className="mb-6 animate-slide-up">
       <div className="flex items-center gap-4 mb-3">
-        <div className="text-4xl">{icon}</div>
+        {icon && <div className="text-4xl">{icon}</div>}
         <h2 className="text-3xl md:text-4xl font-black bg-gradient-to-r from-[theme(--color-primary)] to-[theme(--color-accent)] bg-clip-text text-transparent">
           {title}
         </h2>

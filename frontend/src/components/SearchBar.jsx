@@ -46,7 +46,7 @@ const SearchBar = ({ onSearch, placeholder }) => {
                     type="submit"
                     className="px-8 py-4 bg-gradient-to-r from-[theme(--color-primary)] to-[theme(--color-accent)] text-white font-bold rounded-2xl hover:shadow-2xl hover:shadow-[theme(--color-primary)]/50 transform hover:scale-105 transition-all duration-300 flex items-center gap-2 shadow-lg"
                 >
-                    <span className="text-xl">🔍</span>
+                    <span className="text-xl"></span>
                     <span className="hidden sm:inline">Search</span>
                 </button>
             </div>

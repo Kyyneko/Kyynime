@@ -97,7 +97,7 @@ const CharacterDetail = ({ characterId, onClose }) => {
     return (
       <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center animate-fade-in">
         <div className="bg-[theme(--color-dark-card)] rounded-2xl p-6 sm:p-8 max-w-md mx-4 text-center border-2 border-[theme(--color-border)]">
-          <div className="text-5xl sm:text-6xl mb-4">😔</div>
+          <div className="text-5xl sm:text-6xl mb-4"></div>
           <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">
             Failed to Load Character
           </h3>
@@ -109,7 +109,7 @@ const CharacterDetail = ({ characterId, onClose }) => {
               onClick={loadCharacterData}
               className="px-5 py-2.5 sm:px-6 sm:py-3 bg-gradient-to-r from-[theme(--color-primary)] to-[theme(--color-accent)] text-white font-bold rounded-xl hover:shadow-lg transform hover:scale-105 transition-all duration-300 text-sm sm:text-base"
             >
-              🔄 Retry
+               Retry
             </button>
             <button
               onClick={onClose}
@@ -179,7 +179,7 @@ const CharacterDetail = ({ characterId, onClose }) => {
 
                   <div className="flex flex-wrap gap-2 mb-4 text-xs sm:text-sm">
                     <span className="bg-gradient-to-r from-[theme(--color-primary)] to-[theme(--color-primary-dark)] px-3 py-1 sm:px-4 sm:py-2 rounded-xl text-white font-black shadow-xl flex items-center gap-1 border-2 border-[theme(--color-primary-light)]">
-                      <span>⭐</span>
+                      <span></span>
                       <span>
                         {character.favorites
                           ? `${character.favorites.toLocaleString()} favorites`
@@ -219,10 +219,10 @@ const CharacterDetail = ({ characterId, onClose }) => {
                     : "text-[theme(--color-text-secondary)] hover:text-white hover:bg-[theme(--color-dark-card)] border-b-4 border-transparent"
                 }`}
               >
-                {tab === "overview" && "📖 "}
-                {tab === "anime" && "🎬 "}
-                {tab === "manga" && "📖 "}
-                {tab === "voices" && "🎙️ "}
+                {tab === "overview" && " "}
+                {tab === "anime" && " "}
+                {tab === "manga" && " "}
+                {tab === "voices" && " "}
                 {tab}
               </button>
             ))}
@@ -235,7 +235,7 @@ const CharacterDetail = ({ characterId, onClose }) => {
               <div className="space-y-6 sm:space-y-8">
                 <div>
                   <h2 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4 flex items-center gap-2">
-                    <span>📖</span> About
+                    <span></span> About
                   </h2>
                   <div className="bg-gradient-to-br from-[theme(--color-dark)] to-[theme(--color-dark-card)] border-2 border-[theme(--color-border)] p-4 sm:p-6 rounded-xl">
                     <p className="text-sm sm:text-base text-white leading-relaxed whitespace-pre-line">
@@ -246,7 +246,7 @@ const CharacterDetail = ({ characterId, onClose }) => {
 
                 <div>
                   <h2 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4 flex items-center gap-2">
-                    <span>📊</span> Information
+                    <span></span> Information
                   </h2>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                     <InfoRow label="Name" value={character.name} />
@@ -298,7 +298,7 @@ const CharacterDetail = ({ characterId, onClose }) => {
                     ))}
                   </div>
                 ) : (
-                  <EmptyState icon="🎬" text="No anime roles available" />
+                  <EmptyState icon="" text="No anime roles available" />
                 )}
               </div>
             )}
@@ -333,7 +333,7 @@ const CharacterDetail = ({ characterId, onClose }) => {
                     ))}
                   </div>
                 ) : (
-                  <EmptyState icon="📖" text="No manga roles available" />
+                  <EmptyState icon="" text="No manga roles available" />
                 )}
               </div>
             )}
@@ -365,7 +365,7 @@ const CharacterDetail = ({ characterId, onClose }) => {
                           </p>
                           {v.anime && (
                             <p className="text-[theme(--color-text-secondary)] text-xs sm:text-sm mt-1 line-clamp-2">
-                              🎬 {v.anime.title}
+                               {v.anime.title}
                             </p>
                           )}
                         </div>
@@ -373,7 +373,7 @@ const CharacterDetail = ({ characterId, onClose }) => {
                     ))}
                   </div>
                 ) : (
-                  <EmptyState icon="🎙️" text="No voice actor data available" />
+                  <EmptyState icon="" text="No voice actor data available" />
                 )}
               </div>
             )}

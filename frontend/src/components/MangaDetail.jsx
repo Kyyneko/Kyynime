@@ -81,7 +81,7 @@ const MangaDetail = ({ mangaId, onClose }) => {
           <div className="relative">
             <div className="animate-spin rounded-full h-20 w-20 border-t-4 border-b-4 border-[#6366f1]"></div>
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-              <div className="text-2xl">📖</div>
+              <div className="text-2xl"></div>
             </div>
           </div>
           <p className="mt-6 text-gray-400 text-lg font-medium">
@@ -96,7 +96,7 @@ const MangaDetail = ({ mangaId, onClose }) => {
     return (
       <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center animate-fade-in">
         <div className="bg-[#1a1f3a] rounded-2xl p-6 sm:p-8 max-w-md mx-4 text-center border-2 border-[#2d3454]">
-          <div className="text-6xl mb-4">😔</div>
+          <div className="text-6xl mb-4"></div>
           <h3 className="text-2xl font-bold text-white mb-3">
             Failed to Load Manga
           </h3>
@@ -108,7 +108,7 @@ const MangaDetail = ({ mangaId, onClose }) => {
               onClick={loadMangaData}
               className="px-6 py-3 bg-gradient-to-r from-[#6366f1] to-[#8b5cf6] text-white font-bold rounded-xl hover:shadow-lg transform hover:scale-105 transition-all duration-300"
             >
-              🔄 Retry
+               Retry
             </button>
             <button
               onClick={onClose}
@@ -175,7 +175,7 @@ const MangaDetail = ({ mangaId, onClose }) => {
 
                   <div className="flex flex-wrap gap-2 mb-4 text-xs sm:text-sm">
                     <span className="bg-gradient-to-r from-amber-500 to-orange-500 px-3 py-1 sm:px-4 sm:py-2 rounded-xl text-white font-black shadow-xl flex items-center gap-1 border-2 border-amber-400">
-                      <span>⭐</span>
+                      <span></span>
                       <span>{manga.score || "N/A"}</span>
                     </span>
                     <span className="bg-gradient-to-r from-[#6366f1] to-[#4f46e5] border-2 border-[#818cf8] px-3 py-1 sm:px-4 sm:py-2 rounded-xl text-white font-bold shadow-lg">
@@ -230,10 +230,10 @@ const MangaDetail = ({ mangaId, onClose }) => {
                       : "text-gray-400 hover:text-white hover:bg-[#1a1f3a] border-b-4 border-transparent"
                   }`}
                 >
-                  {tab === "overview" && "📖 "}
-                  {tab === "characters" && "👥 "}
-                  {tab === "stats" && "📊 "}
-                  {tab === "recommendations" && "💡 "}
+                  {tab === "overview" && " "}
+                  {tab === "characters" && " "}
+                  {tab === "stats" && " "}
+                  {tab === "recommendations" && " "}
                   {tab}
                 </button>
               )
@@ -247,7 +247,7 @@ const MangaDetail = ({ mangaId, onClose }) => {
               <div className="space-y-6 sm:space-y-8">
                 <div>
                   <h2 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4 flex items-center gap-2">
-                    <span>📖</span> Synopsis
+                    <span></span> Synopsis
                   </h2>
                   <div className="bg-gradient-to-br from-[#151829] to-[#1a1f3a] border-2 border-[#2d3454] p-4 sm:p-6 rounded-xl">
                     <p className="text-sm sm:text-base text-white leading-relaxed">
@@ -259,7 +259,7 @@ const MangaDetail = ({ mangaId, onClose }) => {
                 {manga.background && (
                   <div>
                     <h2 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4 flex items-center gap-2">
-                      <span>ℹ️</span> Background
+                      <span></span> Background
                     </h2>
                     <div className="bg-gradient-to-br from-[#151829] to-[#1a1f3a] border-2 border-[#2d3454] p-4 sm:p-6 rounded-xl">
                       <p className="text-sm sm:text-base text-white leading-relaxed">
@@ -271,7 +271,7 @@ const MangaDetail = ({ mangaId, onClose }) => {
 
                 <div>
                   <h2 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4 flex items-center gap-2">
-                    <span>📊</span> Information
+                    <span></span> Information
                   </h2>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                     <InfoRow label="Type" value={manga.type || "N/A"} />
@@ -349,7 +349,7 @@ const MangaDetail = ({ mangaId, onClose }) => {
                   </div>
                 ) : (
                   <div className="text-center py-12 sm:py-16 text-gray-400">
-                    <div className="text-5xl sm:text-6xl mb-4">👥</div>
+                    <div className="text-5xl sm:text-6xl mb-4"></div>
                     <p className="text-base sm:text-lg font-semibold">
                       No character information available
                     </p>
@@ -373,7 +373,7 @@ const MangaDetail = ({ mangaId, onClose }) => {
                 {stats.scores && stats.scores.length > 0 && (
                   <div>
                     <h2 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6 flex items-center gap-2">
-                      <span>📊</span> Score Distribution
+                      <span></span> Score Distribution
                     </h2>
                     <div className="space-y-2 sm:space-y-3">
                       {stats.scores.map((score) => (
@@ -409,7 +409,7 @@ const MangaDetail = ({ mangaId, onClose }) => {
                             {rec.entry.title}
                           </h3>
                           <p className="text-[#6366f1] text-xs mt-1 font-semibold">
-                            👍 {rec.votes} votes
+                             {rec.votes} votes
                           </p>
                         </div>
                       </div>
@@ -417,7 +417,7 @@ const MangaDetail = ({ mangaId, onClose }) => {
                   </div>
                 ) : (
                   <div className="text-center py-12 sm:py-16 text-gray-400">
-                    <div className="text-5xl sm:text-6xl mb-4">💡</div>
+                    <div className="text-5xl sm:text-6xl mb-4"></div>
                     <p className="text-base sm:text-lg font-semibold">
                       No recommendations available
                     </p>

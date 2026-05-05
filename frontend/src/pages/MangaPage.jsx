@@ -49,7 +49,7 @@ const MangaPage = () => {
       </div>
 
       <PageHeader
-        icon={isSearch ? '🔍' : '📖'}
+        icon={isSearch ? '' : ''}
         title={isSearch ? `Search: "${searchQuery}"` : 'Top Manga'}
         count={!isLoading && !error ? mangaList.length : undefined}
         countLabel="manga found"

@@ -50,9 +50,9 @@ const AnimePage = ({ mode = 'top' }) => {
   };
 
   const getIcon = () => {
-    if (currentMode === 'search') return '🔍';
-    if (currentMode === 'seasonal') return '📅';
-    return '⭐';
+    if (currentMode === 'search') return '';
+    if (currentMode === 'seasonal') return '';
+    return '';
   };
 
   return (
@@ -69,10 +69,10 @@ const AnimePage = ({ mode = 'top' }) => {
       {!searchQuery && (
         <div className="flex gap-2 mb-6 animate-fade-in">
           <Link to="/anime" className={`px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-300 ${mode === 'top' ? 'bg-gradient-to-r from-[theme(--color-primary)] to-[theme(--color-primary-dark)] text-white shadow-lg shadow-[theme(--color-primary)]/50' : 'bg-[theme(--color-dark-card)] text-[theme(--color-text-secondary)] border border-[theme(--color-border)] hover:border-[theme(--color-primary)] hover:text-white'}`}>
-            ⭐ Top Anime
+             Top Anime
           </Link>
           <Link to="/anime/seasonal" className={`px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-300 ${mode === 'seasonal' ? 'bg-gradient-to-r from-[theme(--color-primary)] to-[theme(--color-primary-dark)] text-white shadow-lg shadow-[theme(--color-primary)]/50' : 'bg-[theme(--color-dark-card)] text-[theme(--color-text-secondary)] border border-[theme(--color-border)] hover:border-[theme(--color-primary)] hover:text-white'}`}>
-            📅 Seasonal
+             Seasonal
           </Link>
         </div>
       )}

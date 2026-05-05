@@ -20,7 +20,7 @@ const PeopleCard = ({ person, onClick }) => {
 
         {person.favorites && (
           <div className="absolute top-3 right-3 bg-gradient-to-br from-pink-500 to-rose-600 text-white px-2.5 py-1 rounded-lg font-black text-xs shadow-xl flex items-center gap-1">
-            <span>❤️</span>
+            <span></span>
             <span>{person.favorites.toLocaleString()}</span>
           </div>
         )}
@@ -28,7 +28,7 @@ const PeopleCard = ({ person, onClick }) => {
         {person.birthday && (
           <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/90 to-transparent">
             <span className="text-white/80 text-xs font-medium">
-              🎂 {new Date(person.birthday).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+               {new Date(person.birthday).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
             </span>
           </div>
         )}

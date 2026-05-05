@@ -49,7 +49,7 @@ const CharacterPage = () => {
       </div>
 
       <PageHeader
-        icon={isSearch ? '🔍' : '👥'}
+        icon={isSearch ? '' : ''}
         title={isSearch ? `Search: "${searchQuery}"` : 'Top Characters'}
         count={!isLoading && !error ? charList.length : undefined}
         countLabel="characters found"

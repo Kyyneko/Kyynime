@@ -48,10 +48,10 @@ const SearchPage = () => {
   };
 
   const types = [
-    { id: 'anime', icon: '🎬', label: 'Anime' },
-    { id: 'manga', icon: '📖', label: 'Manga' },
-    { id: 'characters', icon: '👥', label: 'Characters' },
-    { id: 'people', icon: '🎭', label: 'People' },
+    { id: 'anime', icon: '', label: 'Anime' },
+    { id: 'manga', icon: '', label: 'Manga' },
+    { id: 'characters', icon: '', label: 'Characters' },
+    { id: 'people', icon: '', label: 'People' },
   ];
 
   const getDetailPath = (item) => {
@@ -88,7 +88,7 @@ const SearchPage = () => {
               className="w-full px-6 py-4 bg-[theme(--color-dark-card)] border-2 border-[theme(--color-border)] rounded-2xl text-white placeholder-[theme(--color-text-muted)] focus:border-[theme(--color-primary)] focus:outline-none focus:shadow-lg focus:shadow-[theme(--color-primary)]/20 transition-all text-lg font-medium"
             />
             <button type="submit" className="absolute right-3 top-1/2 -translate-y-1/2 px-6 py-2.5 bg-gradient-to-r from-[theme(--color-primary)] to-[theme(--color-primary-dark)] text-white font-bold rounded-xl hover:shadow-lg transition-all">
-              🔍 Search
+               Search
             </button>
           </div>
         </form>
@@ -115,7 +115,7 @@ const SearchPage = () => {
           <>
             <div className="mb-6">
               <h2 className="text-2xl font-black text-white mb-1">
-                🔍 Results for "<span className="text-[theme(--color-primary)]">{query}</span>"
+                 Results for "<span className="text-[theme(--color-primary)]">{query}</span>"
               </h2>
               {isLoading ? (
                 <div className="flex items-center gap-2 text-sm">
@@ -139,7 +139,7 @@ const SearchPage = () => {
           </>
         ) : (
           <div className="flex flex-col items-center justify-center min-h-[400px]">
-            <div className="text-8xl mb-6">🔍</div>
+            <div className="text-8xl mb-6"></div>
             <h3 className="text-2xl font-black text-white mb-2">Start Searching</h3>
             <p className="text-[theme(--color-text-secondary)] text-lg">Enter a query above to find anime, manga, characters, and people</p>
           </div>

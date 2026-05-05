@@ -5,12 +5,12 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const navItems = [
-    { to: '/anime', icon: '🎬', label: 'Anime' },
-    { to: '/manga', icon: '📖', label: 'Manga' },
-    { to: '/characters', icon: '👥', label: 'Characters' },
-    { to: '/people', icon: '🎭', label: 'People' },
-    { to: '/random', icon: '🎲', label: 'Random' },
-    { to: '/search', icon: '🔍', label: 'Search' },
+    { to: '/anime', icon: '', label: 'Anime' },
+    { to: '/manga', icon: '', label: 'Manga' },
+    { to: '/characters', icon: '', label: 'Characters' },
+    { to: '/people', icon: '', label: 'People' },
+    { to: '/random', icon: '', label: 'Random' },
+    { to: '/search', icon: '', label: 'Search' },
   ];
 
   const getNavClass = (isActive) =>
@@ -33,7 +33,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between py-4">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3 group">
-            <div className="text-3xl md:text-4xl transform group-hover:rotate-12 transition-transform duration-300">🎌</div>
+            <div className="text-3xl md:text-4xl transform group-hover:rotate-12 transition-transform duration-300"></div>
             <div>
               <h1 className="text-xl md:text-2xl lg:text-3xl font-black bg-gradient-to-r from-[theme(--color-primary)] via-[theme(--color-primary-light)] to-[theme(--color-accent)] bg-clip-text text-transparent tracking-tight">
                 Kyynime

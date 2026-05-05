@@ -30,7 +30,7 @@ const MangaDetailPage = () => {
   if (error || !mangaData?.data) {
     return (
       <div className="flex flex-col items-center justify-center min-h-[500px] animate-fade-in">
-        <div className="text-8xl mb-6">😔</div>
+        <div className="text-8xl mb-6"></div>
         <h3 className="text-3xl font-black text-white mb-4">Failed to Load Manga</h3>
         <p className="text-[theme(--color-text-secondary)] mb-8 text-lg">{error?.message || 'Manga not found'}</p>
         <button onClick={() => navigate(-1)} className="px-8 py-3 bg-gradient-to-r from-[theme(--color-primary)] to-[theme(--color-accent)] text-white font-black rounded-xl hover:shadow-2xl transform hover:scale-105 transition-all">← Go Back</button>
@@ -66,11 +66,11 @@ const MangaDetailPage = () => {
                   <h1 className="text-xl sm:text-2xl lg:text-4xl font-black text-white mb-2">{manga.title}</h1>
                   <p className="text-sm sm:text-base text-[theme(--color-text-muted)] mb-4">{manga.title_japanese}</p>
                   <div className="flex flex-wrap gap-2 mb-4 text-xs sm:text-sm">
-                    {manga.score && <span className="bg-gradient-to-r from-amber-500 to-orange-500 px-3 py-1 rounded-xl text-white font-black border-2 border-amber-400">⭐ {manga.score}</span>}
+                    {manga.score && <span className="bg-gradient-to-r from-amber-500 to-orange-500 px-3 py-1 rounded-xl text-white font-black border-2 border-amber-400"> {manga.score}</span>}
                     <span className="bg-gradient-to-r from-[theme(--color-primary)] to-[theme(--color-primary-dark)] border-2 border-[theme(--color-primary-light)] px-3 py-1 rounded-xl text-white font-bold">{manga.type}</span>
                     <span className="bg-gradient-to-r from-emerald-500 to-teal-500 border-2 border-emerald-400 px-3 py-1 rounded-xl text-white font-bold">{manga.status}</span>
                     <span className="bg-gradient-to-r from-purple-500 to-pink-500 border-2 border-purple-400 px-3 py-1 rounded-xl text-white font-bold">{manga.chapters || '?'} Ch / {manga.volumes || '?'} Vol</span>
-                    {manga.rank && <span className="bg-gradient-to-r from-yellow-500 to-amber-600 border-2 border-yellow-400 px-3 py-1 rounded-xl text-white font-black">🏆 #{manga.rank}</span>}
+                    {manga.rank && <span className="bg-gradient-to-r from-yellow-500 to-amber-600 border-2 border-yellow-400 px-3 py-1 rounded-xl text-white font-black"> #{manga.rank}</span>}
                   </div>
                   <div className="flex flex-wrap gap-2">
                     {manga.genres?.map(g => <span key={g.mal_id} className="bg-[theme(--color-primary)]/30 border-2 border-[theme(--color-primary)] text-white px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-bold">{g.name}</span>)}
@@ -84,7 +84,7 @@ const MangaDetailPage = () => {
           <div className="flex border-b-2 border-[theme(--color-border)] px-2 sm:px-4 lg:px-8 overflow-x-auto bg-[theme(--color-dark-light)]">
             {['overview', 'characters', 'stats', 'recommendations'].map(tab => (
               <button key={tab} className={`px-3 sm:px-4 lg:px-6 py-3 sm:py-4 font-black capitalize transition-all whitespace-nowrap text-xs sm:text-sm lg:text-base ${activeTab === tab ? 'text-white bg-gradient-to-b from-[theme(--color-primary)] to-[theme(--color-primary-dark)] border-b-4 border-[theme(--color-primary-light)] shadow-lg' : 'text-[theme(--color-text-muted)] hover:text-white hover:bg-[theme(--color-dark-card)] border-b-4 border-transparent'}`} onClick={() => setActiveTab(tab)}>
-                {tab === 'overview' && '📖 '}{tab === 'characters' && '👥 '}{tab === 'stats' && '📊 '}{tab === 'recommendations' && '💡 '}{tab}
+                {tab === 'overview' && ' '}{tab === 'characters' && ' '}{tab === 'stats' && ' '}{tab === 'recommendations' && ' '}{tab}
               </button>
             ))}
           </div>
@@ -94,13 +94,13 @@ const MangaDetailPage = () => {
             {activeTab === 'overview' && (
               <div className="space-y-6">
                 <div>
-                  <h2 className="text-xl sm:text-2xl font-bold text-white mb-3">📖 Synopsis</h2>
+                  <h2 className="text-xl sm:text-2xl font-bold text-white mb-3"> Synopsis</h2>
                   <div className="bg-gradient-to-br from-[theme(--color-dark-light)] to-[theme(--color-dark-card)] border-2 border-[theme(--color-border)] p-4 sm:p-6 rounded-xl">
                     <p className="text-sm sm:text-base text-white leading-relaxed">{manga.synopsis || 'No synopsis available.'}</p>
                   </div>
                 </div>
                 <div>
-                  <h2 className="text-xl sm:text-2xl font-bold text-white mb-3">📊 Information</h2>
+                  <h2 className="text-xl sm:text-2xl font-bold text-white mb-3"> Information</h2>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {[
                       { label: 'Published', value: manga.published?.string },
@@ -134,7 +134,7 @@ const MangaDetailPage = () => {
                   ))}
                 </div>
               ) : (
-                <div className="text-center py-16 text-[theme(--color-text-muted)]"><div className="text-6xl mb-4">👥</div><p className="text-lg font-semibold">No characters available</p></div>
+                <div className="text-center py-16 text-[theme(--color-text-muted)]"><div className="text-6xl mb-4"></div><p className="text-lg font-semibold">No characters available</p></div>
               )
             )}
 
@@ -164,13 +164,13 @@ const MangaDetailPage = () => {
                       <img src={rec.entry.images.jpg.image_url} alt={rec.entry.title} className="w-full h-40 sm:h-48 object-cover" />
                       <div className="p-2 sm:p-3">
                         <h4 className="text-white text-xs sm:text-sm font-bold line-clamp-2">{rec.entry.title}</h4>
-                        <p className="text-[theme(--color-primary)] text-xs mt-1 font-semibold">👍 {rec.votes} votes</p>
+                        <p className="text-[theme(--color-primary)] text-xs mt-1 font-semibold"> {rec.votes} votes</p>
                       </div>
                     </Link>
                   ))}
                 </div>
               ) : (
-                <div className="text-center py-16 text-[theme(--color-text-muted)]"><div className="text-6xl mb-4">💡</div><p className="text-lg font-semibold">No recommendations available</p></div>
+                <div className="text-center py-16 text-[theme(--color-text-muted)]"><div className="text-6xl mb-4"></div><p className="text-lg font-semibold">No recommendations available</p></div>
               )
             )}
           </div>

@@ -41,7 +41,7 @@ const AnimeDetail = ({ animeId, onClose }) => {
     isLoadingRef.current = true;
     setLoading(true);
     setError(null);
-    console.log("🔄 Loading anime data for ID:", animeId);
+    console.log(" Loading anime data for ID:", animeId);
 
     try {
       const results = await Promise.allSettled([
@@ -83,8 +83,8 @@ const AnimeDetail = ({ animeId, onClose }) => {
           ? videoResult.value.data
           : { promo: [], episodes: [], music_videos: [] };
 
-      console.log("🎬 Videos data:", videosData);
-      console.log("🎬 Promo videos count:", videosData.promo?.length || 0);
+      console.log(" Videos data:", videosData);
+      console.log(" Promo videos count:", videosData.promo?.length || 0);
       setVideos(videosData);
 
       setStats(
@@ -134,7 +134,7 @@ const AnimeDetail = ({ animeId, onClose }) => {
           <div className="relative">
             <div className="animate-spin rounded-full h-20 w-20 border-t-4 border-b-4 border-[#6366f1]"></div>
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-              <div className="text-2xl">🎌</div>
+              <div className="text-2xl"></div>
             </div>
           </div>
           <p className="mt-6 text-gray-400 text-lg font-medium">
@@ -149,7 +149,7 @@ const AnimeDetail = ({ animeId, onClose }) => {
     return (
       <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center animate-fade-in">
         <div className="bg-[#1a1f3a] rounded-2xl p-6 sm:p-8 max-w-md mx-4 text-center border-2 border-[#2d3454]">
-          <div className="text-6xl mb-4">😔</div>
+          <div className="text-6xl mb-4"></div>
           <h3 className="text-2xl font-bold text-white mb-3">
             Failed to Load Anime
           </h3>
@@ -161,7 +161,7 @@ const AnimeDetail = ({ animeId, onClose }) => {
               onClick={loadAnimeData}
               className="px-6 py-3 bg-gradient-to-r from-[#6366f1] to-[#8b5cf6] text-white font-bold rounded-xl hover:shadow-lg transform hover:scale-105 transition-all duration-300"
             >
-              🔄 Retry
+               Retry
             </button>
             <button
               onClick={onClose}
@@ -213,7 +213,7 @@ const AnimeDetail = ({ animeId, onClose }) => {
 
                   <div className="flex flex-wrap gap-2 mb-4 text-xs sm:text-sm">
                     <span className="bg-gradient-to-r from-amber-500 to-orange-500 px-3 py-1 sm:px-4 sm:py-2 rounded-xl text-white font-black shadow-xl flex items-center gap-1 border-2 border-amber-400">
-                      <span>⭐</span>
+                      <span></span>
                       <span>{anime.score || "N/A"}</span>
                     </span>
                     <span className="bg-gradient-to-r from-[#6366f1] to-[#4f46e5] border-2 border-[#818cf8] px-3 py-1 sm:px-4 sm:py-2 rounded-xl text-white font-bold shadow-lg">
@@ -227,7 +227,7 @@ const AnimeDetail = ({ animeId, onClose }) => {
                     </span>
                     {anime.rank && (
                       <span className="bg-gradient-to-r from-yellow-500 to-amber-600 border-2 border-yellow-400 px-3 py-1 sm:px-4 sm:py-2 rounded-xl text-white font-black shadow-xl flex items-center gap-1">
-                        <span>🏆</span>
+                        <span></span>
                         <span>#{anime.rank}</span>
                       </span>
                     )}
@@ -266,11 +266,11 @@ const AnimeDetail = ({ animeId, onClose }) => {
                 }`}
                 onClick={() => setActiveTab(tab)}
               >
-                {tab === "overview" && "📖 "}
-                {tab === "characters" && "👥 "}
-                {tab === "videos" && "🎬 "}
-                {tab === "stats" && "📊 "}
-                {tab === "recommendations" && "💡 "}
+                {tab === "overview" && " "}
+                {tab === "characters" && " "}
+                {tab === "videos" && " "}
+                {tab === "stats" && " "}
+                {tab === "recommendations" && " "}
                 {tab}
               </button>
             ))}
@@ -282,7 +282,7 @@ const AnimeDetail = ({ animeId, onClose }) => {
               <div className="space-y-6 sm:space-y-8">
                 <div>
                   <h2 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4 flex items-center gap-2">
-                    <span>📖</span> Synopsis
+                    <span></span> Synopsis
                   </h2>
                   <div className="bg-gradient-to-br from-[#151829] to-[#1a1f3a] border-2 border-[#2d3454] p-4 sm:p-6 rounded-xl">
                     <p className="text-sm sm:text-base text-white leading-relaxed">
@@ -294,7 +294,7 @@ const AnimeDetail = ({ animeId, onClose }) => {
                 {anime.background && (
                   <div>
                     <h2 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4 flex items-center gap-2">
-                      <span>ℹ️</span> Background
+                      <span></span> Background
                     </h2>
                     <div className="bg-gradient-to-br from-[#151829] to-[#1a1f3a] border-2 border-[#2d3454] p-4 sm:p-6 rounded-xl">
                       <p className="text-sm sm:text-base text-white leading-relaxed">
@@ -306,7 +306,7 @@ const AnimeDetail = ({ animeId, onClose }) => {
 
                 <div>
                   <h2 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4 flex items-center gap-2">
-                    <span>📊</span> Information
+                    <span></span> Information
                   </h2>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                     <div className="bg-gradient-to-br from-[#151829] to-[#1a1f3a] border-2 border-[#2d3454] hover:border-[#6366f1] p-3 sm:p-4 rounded-xl transition-all">
@@ -359,7 +359,7 @@ const AnimeDetail = ({ animeId, onClose }) => {
                         {themes.openings?.length > 0 && (
                           <div>
                             <h3 className="text-lg sm:text-xl font-bold text-[#8b5cf6] mb-2 sm:mb-3 flex items-center gap-2">
-                              <span>▶️</span> Openings
+                              <span></span> Openings
                             </h3>
                             <ul className="space-y-2">
                               {themes.openings.map((op, idx) => (
@@ -379,7 +379,7 @@ const AnimeDetail = ({ animeId, onClose }) => {
                         {themes.endings?.length > 0 && (
                           <div>
                             <h3 className="text-lg sm:text-xl font-bold text-[#8b5cf6] mb-2 sm:mb-3 flex items-center gap-2">
-                              <span>⏹️</span> Endings
+                              <span></span> Endings
                             </h3>
                             <ul className="space-y-2">
                               {themes.endings.map((ed, idx) => (
@@ -403,7 +403,7 @@ const AnimeDetail = ({ animeId, onClose }) => {
                 {streaming && streaming.length > 0 && (
                   <div>
                     <h2 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4 flex items-center gap-2">
-                      <span>📺</span> Where to Watch
+                      <span></span> Where to Watch
                     </h2>
                     <div className="flex flex-wrap gap-2 sm:gap-3">
                       {streaming.map((stream, idx) => (
@@ -450,7 +450,7 @@ const AnimeDetail = ({ animeId, onClose }) => {
                   </div>
                 ) : (
                   <div className="text-center py-12 sm:py-16 text-gray-400">
-                    <div className="text-5xl sm:text-6xl mb-4">👥</div>
+                    <div className="text-5xl sm:text-6xl mb-4"></div>
                     <p className="text-base sm:text-lg font-semibold">
                       No character information available
                     </p>
@@ -465,7 +465,7 @@ const AnimeDetail = ({ animeId, onClose }) => {
                 {videos?.promo && videos.promo.length > 0 && (
                   <div>
                     <h2 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4 flex items-center gap-2">
-                      <span>🎬</span> Promotional Videos ({videos.promo.length})
+                      <span></span> Promotional Videos ({videos.promo.length})
                     </h2>
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
                       {videos.promo.map((video, idx) => (
@@ -556,7 +556,7 @@ const AnimeDetail = ({ animeId, onClose }) => {
                 {(!videos?.promo || videos.promo.length === 0) &&
                   (!videos?.music_videos || videos.music_videos.length === 0) && (
                     <div className="text-center py-12 sm:py-16 text-gray-400">
-                      <div className="text-5xl sm:text-6xl mb-4">🎬</div>
+                      <div className="text-5xl sm:text-6xl mb-4"></div>
                       <p className="text-base sm:text-lg font-semibold">
                         No videos available for this anime
                       </p>
@@ -624,7 +624,7 @@ const AnimeDetail = ({ animeId, onClose }) => {
                 {stats.scores && stats.scores.length > 0 && (
                   <div>
                     <h3 className="text-xl sm:text-2xl font-black text-white mb-4 sm:mb-6 flex items-center gap-2">
-                      <span>📊</span> Score Distribution
+                      <span></span> Score Distribution
                     </h3>
                     <div className="space-y-2 sm:space-y-3">
                       {stats.scores.map((score) => (
@@ -686,7 +686,7 @@ const AnimeDetail = ({ animeId, onClose }) => {
                             {rec.entry.title}
                           </h4>
                           <p className="text-[#6366f1] text-xs mt-1 font-semibold">
-                            👍 {rec.votes} votes
+                             {rec.votes} votes
                           </p>
                         </div>
                       </div>
@@ -694,7 +694,7 @@ const AnimeDetail = ({ animeId, onClose }) => {
                   </div>
                 ) : (
                   <div className="text-center py-12 sm:py-16 text-gray-400">
-                    <div className="text-5xl sm:text-6xl mb-4">💡</div>
+                    <div className="text-5xl sm:text-6xl mb-4"></div>
                     <p className="text-base sm:text-lg font-semibold">
                       No recommendations available
                     </p>

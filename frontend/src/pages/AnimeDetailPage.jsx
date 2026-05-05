@@ -68,7 +68,7 @@ const AnimeDetailPage = () => {
   if (error || !animeData?.data) {
     return (
       <div className="flex flex-col items-center justify-center min-h-[500px] animate-fade-in">
-        <div className="text-8xl mb-6">😔</div>
+        <div className="text-8xl mb-6"></div>
         <h3 className="text-3xl font-black text-white mb-4">Failed to Load Anime</h3>
         <p className="text-[theme(--color-text-secondary)] mb-8 text-lg">{error?.message || 'Anime not found'}</p>
         <button onClick={() => navigate(-1)} className="px-8 py-3 bg-gradient-to-r from-[theme(--color-primary)] to-[theme(--color-accent)] text-white font-black rounded-xl hover:shadow-2xl transform hover:scale-105 transition-all">
@@ -88,7 +88,7 @@ const AnimeDetailPage = () => {
   const mainImage = anime.images?.jpg?.large_image_url || anime.images?.jpg?.image_url;
 
   const tabs = ['overview', 'characters', 'videos', 'stats', 'recommendations'];
-  const tabIcons = { overview: '📖', characters: '👥', videos: '🎬', stats: '📊', recommendations: '💡' };
+  const tabIcons = { overview: '', characters: '', videos: '', stats: '', recommendations: '' };
 
   return (
     <>
@@ -118,13 +118,13 @@ const AnimeDetailPage = () => {
                   <p className="text-sm sm:text-base lg:text-lg text-[theme(--color-text-muted)] mb-4">{anime.title_japanese}</p>
                   <div className="flex flex-wrap gap-2 mb-4 text-xs sm:text-sm">
                     {anime.score && (
-                      <span className="bg-gradient-to-r from-amber-500 to-orange-500 px-3 py-1 rounded-xl text-white font-black shadow-xl flex items-center gap-1 border-2 border-amber-400">⭐ {anime.score}</span>
+                      <span className="bg-gradient-to-r from-amber-500 to-orange-500 px-3 py-1 rounded-xl text-white font-black shadow-xl flex items-center gap-1 border-2 border-amber-400"> {anime.score}</span>
                     )}
                     <span className="bg-gradient-to-r from-[theme(--color-primary)] to-[theme(--color-primary-dark)] border-2 border-[theme(--color-primary-light)] px-3 py-1 rounded-xl text-white font-bold shadow-lg">{anime.type}</span>
                     <span className="bg-gradient-to-r from-emerald-500 to-teal-500 border-2 border-emerald-400 px-3 py-1 rounded-xl text-white font-bold shadow-lg">{anime.status}</span>
                     <span className="bg-gradient-to-r from-purple-500 to-pink-500 border-2 border-purple-400 px-3 py-1 rounded-xl text-white font-bold shadow-lg">{anime.episodes || '?'} Episodes</span>
                     {anime.rank && (
-                      <span className="bg-gradient-to-r from-yellow-500 to-amber-600 border-2 border-yellow-400 px-3 py-1 rounded-xl text-white font-black shadow-xl flex items-center gap-1">🏆 #{anime.rank}</span>
+                      <span className="bg-gradient-to-r from-yellow-500 to-amber-600 border-2 border-yellow-400 px-3 py-1 rounded-xl text-white font-black shadow-xl flex items-center gap-1"> #{anime.rank}</span>
                     )}
                   </div>
                   <div className="flex flex-wrap gap-2">
@@ -151,7 +151,7 @@ const AnimeDetailPage = () => {
             {activeTab === 'overview' && (
               <div className="space-y-6 sm:space-y-8">
                 <div>
-                  <h2 className="text-xl sm:text-2xl font-bold text-white mb-3 flex items-center gap-2">📖 Synopsis</h2>
+                  <h2 className="text-xl sm:text-2xl font-bold text-white mb-3 flex items-center gap-2"> Synopsis</h2>
                   <div className="bg-gradient-to-br from-[theme(--color-dark-light)] to-[theme(--color-dark-card)] border-2 border-[theme(--color-border)] p-4 sm:p-6 rounded-xl">
                     <p className="text-sm sm:text-base text-white leading-relaxed">{anime.synopsis || 'No synopsis available.'}</p>
                   </div>
@@ -159,7 +159,7 @@ const AnimeDetailPage = () => {
 
                 {anime.background && (
                   <div>
-                    <h2 className="text-xl sm:text-2xl font-bold text-white mb-3 flex items-center gap-2">ℹ️ Background</h2>
+                    <h2 className="text-xl sm:text-2xl font-bold text-white mb-3 flex items-center gap-2"> Background</h2>
                     <div className="bg-gradient-to-br from-[theme(--color-dark-light)] to-[theme(--color-dark-card)] border-2 border-[theme(--color-border)] p-4 sm:p-6 rounded-xl">
                       <p className="text-sm sm:text-base text-white leading-relaxed">{anime.background}</p>
                     </div>
@@ -167,7 +167,7 @@ const AnimeDetailPage = () => {
                 )}
 
                 <div>
-                  <h2 className="text-xl sm:text-2xl font-bold text-white mb-3 flex items-center gap-2">📊 Information</h2>
+                  <h2 className="text-xl sm:text-2xl font-bold text-white mb-3 flex items-center gap-2"> Information</h2>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {[
                       { label: 'Aired', value: anime.aired?.string },
@@ -191,7 +191,7 @@ const AnimeDetailPage = () => {
                     <div className="bg-gradient-to-br from-[theme(--color-dark-light)] to-[theme(--color-dark-card)] border-2 border-[theme(--color-border)] p-4 sm:p-6 rounded-xl space-y-4">
                       {themes.openings?.length > 0 && (
                         <div>
-                          <h3 className="text-lg font-bold text-[theme(--color-primary-light)] mb-2">▶️ Openings</h3>
+                          <h3 className="text-lg font-bold text-[theme(--color-primary-light)] mb-2"> Openings</h3>
                           <ul className="space-y-2">
                             {themes.openings.map((op, i) => (
                               <li key={i} className="text-white bg-[theme(--color-dark-card)] p-2 sm:p-3 rounded-lg border border-[theme(--color-border)] hover:border-[theme(--color-primary)] transition-all text-xs sm:text-sm">
@@ -203,7 +203,7 @@ const AnimeDetailPage = () => {
                       )}
                       {themes.endings?.length > 0 && (
                         <div>
-                          <h3 className="text-lg font-bold text-[theme(--color-primary-light)] mb-2">⏹️ Endings</h3>
+                          <h3 className="text-lg font-bold text-[theme(--color-primary-light)] mb-2"> Endings</h3>
                           <ul className="space-y-2">
                             {themes.endings.map((ed, i) => (
                               <li key={i} className="text-white bg-[theme(--color-dark-card)] p-2 sm:p-3 rounded-lg border border-[theme(--color-border)] hover:border-[theme(--color-primary)] transition-all text-xs sm:text-sm">
@@ -219,7 +219,7 @@ const AnimeDetailPage = () => {
 
                 {streaming.length > 0 && (
                   <div>
-                    <h2 className="text-xl sm:text-2xl font-bold text-white mb-3 flex items-center gap-2">📺 Where to Watch</h2>
+                    <h2 className="text-xl sm:text-2xl font-bold text-white mb-3 flex items-center gap-2"> Where to Watch</h2>
                     <div className="flex flex-wrap gap-2">
                       {streaming.map((s, i) => (
                         <a key={i} href={s.url} target="_blank" rel="noopener noreferrer" className="bg-gradient-to-r from-[theme(--color-primary)] to-[theme(--color-primary-dark)] hover:shadow-2xl hover:shadow-[theme(--color-primary)]/50 text-white px-4 py-2 rounded-xl font-bold transition-all transform hover:scale-105 text-xs sm:text-sm">{s.name}</a>
@@ -246,7 +246,7 @@ const AnimeDetailPage = () => {
                   </div>
                 ) : (
                   <div className="text-center py-16 text-[theme(--color-text-muted)]">
-                    <div className="text-6xl mb-4">👥</div>
+                    <div className="text-6xl mb-4"></div>
                     <p className="text-lg font-semibold">No character information available</p>
                   </div>
                 )}
@@ -257,7 +257,7 @@ const AnimeDetailPage = () => {
               <div className="space-y-8">
                 {videos?.promo?.length > 0 && (
                   <div>
-                    <h2 className="text-xl sm:text-2xl font-bold text-white mb-4 flex items-center gap-2">🎬 Promotional Videos ({videos.promo.length})</h2>
+                    <h2 className="text-xl sm:text-2xl font-bold text-white mb-4 flex items-center gap-2"> Promotional Videos ({videos.promo.length})</h2>
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                       {videos.promo.map((v, i) => (
                         <div key={i} className="bg-gradient-to-br from-[theme(--color-dark-light)] to-[theme(--color-dark-card)] border-2 border-[theme(--color-border)] rounded-xl overflow-hidden hover:border-[theme(--color-primary)] transition-all">
@@ -278,7 +278,7 @@ const AnimeDetailPage = () => {
                 )}
                 {(!videos?.promo?.length && !videos?.music_videos?.length) && (
                   <div className="text-center py-16 text-[theme(--color-text-muted)]">
-                    <div className="text-6xl mb-4">🎬</div>
+                    <div className="text-6xl mb-4"></div>
                     <p className="text-lg font-semibold">No videos available</p>
                   </div>
                 )}
@@ -304,7 +304,7 @@ const AnimeDetailPage = () => {
                 </div>
                 {stats.scores?.length > 0 && (
                   <div>
-                    <h3 className="text-xl font-black text-white mb-4">📊 Score Distribution</h3>
+                    <h3 className="text-xl font-black text-white mb-4"> Score Distribution</h3>
                     <div className="space-y-2">
                       {stats.scores.map(sc => (
                         <div key={sc.score} className="flex items-center gap-2 sm:gap-4 bg-[theme(--color-dark-light)]/50 p-2 sm:p-3 rounded-xl border border-[theme(--color-border)] hover:border-[theme(--color-primary)] transition-all">
@@ -332,14 +332,14 @@ const AnimeDetailPage = () => {
                         <img src={rec.entry.images.jpg.image_url} alt={rec.entry.title} className="w-full h-40 sm:h-48 object-cover" />
                         <div className="p-2 sm:p-3">
                           <h4 className="text-white text-xs sm:text-sm font-bold line-clamp-2">{rec.entry.title}</h4>
-                          <p className="text-[theme(--color-primary)] text-xs mt-1 font-semibold">👍 {rec.votes} votes</p>
+                          <p className="text-[theme(--color-primary)] text-xs mt-1 font-semibold"> {rec.votes} votes</p>
                         </div>
                       </Link>
                     ))}
                   </div>
                 ) : (
                   <div className="text-center py-16 text-[theme(--color-text-muted)]">
-                    <div className="text-6xl mb-4">💡</div>
+                    <div className="text-6xl mb-4"></div>
                     <p className="text-lg font-semibold">No recommendations available</p>
                   </div>
                 )}

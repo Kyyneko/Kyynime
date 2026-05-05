@@ -37,7 +37,7 @@ const AnimeCard = ({ anime, onClick }) => {
                 {/* Score Badge - Top Right */}
                 {anime.score && (
                     <div className="absolute top-3 right-3 bg-gradient-to-br from-amber-400 to-orange-500 text-white px-2.5 py-1 rounded-lg font-black text-sm shadow-xl flex items-center gap-1">
-                        <span>⭐</span>
+                        <span></span>
                         <span>{anime.score}</span>
                     </div>
                 )}

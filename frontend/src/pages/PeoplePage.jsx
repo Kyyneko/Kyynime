@@ -49,7 +49,7 @@ const PeoplePage = () => {
       </div>
 
       <PageHeader
-        icon={isSearch ? '🔍' : '🎭'}
+        icon={isSearch ? '' : ''}
         title={isSearch ? `Search: "${searchQuery}"` : 'Voice Actors & Staff'}
         count={!isLoading && !error ? peopleList.length : undefined}
         countLabel="people found"

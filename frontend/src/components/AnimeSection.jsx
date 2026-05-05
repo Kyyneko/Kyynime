@@ -52,7 +52,7 @@ const AnimeSection = ({ onAnimeClick }) => {
             <div className="mb-6 mt-8">
                 <div className="flex items-center gap-4 mb-3">
                     <div className="text-4xl">
-                        {activeTab === 'search' ? '🔍' : '⭐'}
+                        {activeTab === 'search' ? '' : ''}
                     </div>
                     <h2 className="text-3xl md:text-4xl font-black bg-gradient-to-r from-[theme(--color-primary)] to-[theme(--color-accent)] bg-clip-text text-transparent">
                         {activeTab === 'search' ? `Search: "${searchQuery}"` : 'Top Anime'}
