@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { Helmet } from 'react-helmet-async';
 import { getMangaFull, getMangaCharacters, getMangaRecommendations, getMangaStatistics } from '../services/api';
@@ -7,6 +7,7 @@ import { SkeletonDetail } from '../components/shared/SkeletonCard';
 
 const MangaDetailPage = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('overview');
 
   const { data: mangaData, isLoading, error } = useQuery({
@@ -32,7 +33,7 @@ const MangaDetailPage = () => {
         <div className="text-8xl mb-6">😔</div>
         <h3 className="text-3xl font-black text-white mb-4">Failed to Load Manga</h3>
         <p className="text-[theme(--color-text-secondary)] mb-8 text-lg">{error?.message || 'Manga not found'}</p>
-        <Link to="/manga" className="px-8 py-3 bg-gradient-to-r from-[theme(--color-primary)] to-[theme(--color-accent)] text-white font-black rounded-xl hover:shadow-2xl transform hover:scale-105 transition-all">← Back to Manga</Link>
+        <button onClick={() => navigate(-1)} className="px-8 py-3 bg-gradient-to-r from-[theme(--color-primary)] to-[theme(--color-accent)] text-white font-black rounded-xl hover:shadow-2xl transform hover:scale-105 transition-all">← Go Back</button>
       </div>
     );
   }
@@ -53,7 +54,7 @@ const MangaDetailPage = () => {
       </Helmet>
 
       <div className="animate-fade-in">
-        <Link to="/manga" className="inline-flex items-center gap-2 text-[theme(--color-text-muted)] hover:text-white transition-colors mb-6 font-medium">← Back to Manga</Link>
+        <button onClick={() => navigate(-1)} className="inline-flex items-center gap-2 text-[theme(--color-text-muted)] hover:text-white transition-colors mb-6 font-medium cursor-pointer">← Back</button>
 
         <div className="bg-[theme(--color-dark-card)] rounded-2xl shadow-2xl overflow-hidden border border-[theme(--color-border)]">
           {/* Header */}

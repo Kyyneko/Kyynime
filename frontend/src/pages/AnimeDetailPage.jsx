@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { Helmet } from 'react-helmet-async';
 import { getAnimeFull, getAnimeCharacters, getAnimeVideos, getAnimeStatistics, getAnimeRecommendations, getAnimeStreaming, getAnimeThemes } from '../services/api';
@@ -7,6 +7,7 @@ import { SkeletonDetail } from '../components/shared/SkeletonCard';
 
 const AnimeDetailPage = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('overview');
 
   const { data: animeData, isLoading, error } = useQuery({
@@ -70,9 +71,9 @@ const AnimeDetailPage = () => {
         <div className="text-8xl mb-6">😔</div>
         <h3 className="text-3xl font-black text-white mb-4">Failed to Load Anime</h3>
         <p className="text-[theme(--color-text-secondary)] mb-8 text-lg">{error?.message || 'Anime not found'}</p>
-        <Link to="/anime" className="px-8 py-3 bg-gradient-to-r from-[theme(--color-primary)] to-[theme(--color-accent)] text-white font-black rounded-xl hover:shadow-2xl transform hover:scale-105 transition-all">
-          ← Back to Anime
-        </Link>
+        <button onClick={() => navigate(-1)} className="px-8 py-3 bg-gradient-to-r from-[theme(--color-primary)] to-[theme(--color-accent)] text-white font-black rounded-xl hover:shadow-2xl transform hover:scale-105 transition-all">
+          ← Go Back
+        </button>
       </div>
     );
   }
@@ -102,9 +103,9 @@ const AnimeDetailPage = () => {
 
       <div className="animate-fade-in">
         {/* Back button */}
-        <Link to="/anime" className="inline-flex items-center gap-2 text-[theme(--color-text-muted)] hover:text-white transition-colors mb-6 font-medium">
-          ← Back to Anime
-        </Link>
+        <button onClick={() => navigate(-1)} className="inline-flex items-center gap-2 text-[theme(--color-text-muted)] hover:text-white transition-colors mb-6 font-medium cursor-pointer">
+          ← Back
+        </button>
 
         <div className="bg-[theme(--color-dark-card)] rounded-2xl shadow-2xl overflow-hidden border border-[theme(--color-border)]">
           {/* Header */}
